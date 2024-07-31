@@ -35,12 +35,12 @@ This project demonstrates the integration of machine learning (ML) with blockcha
 
 ### Configuration and Data Files
 
-- **`abi.json`**: Contains the ABI (Application Binary Interface) of the deployed smart contract.
-- **`config.json`**: Alibaba Cloud configuration, including access keys and IDs.
-- **`contract_info.json`**: Stores the address of the deployed smart contract.
-- **`eip_info.json`**: Contains the Elastic IP (EIP) address of the ECS instance.
-- **`model_data.json`**: Stores the serialized model weights and metadata.
-- **`model_data_backup.json`**: Backup of `model_data.json`.
+- **`abi.json`**: Contains the ABI (Application Binary Interface) of the deployed smart contract. This file is provided and not generated automatically.
+- **`config.json`**: Contains Alibaba Cloud configuration, including access keys and IDs. The user needs to create this file with their specific details.
+- **`contract_info.json`**: Stores the address of the deployed smart contract. This file is generated automatically during deployment.
+- **`eip_info.json`**: Contains the Elastic IP (EIP) address of the ECS instance. This file is generated automatically during the ECS setup.
+- **`model_data.json`**: Stores the serialized model weights and metadata. This file is generated automatically after training the model.
+- **`model_data_backup.json`**: Backup of `model_data.json`. This file is created by the backup utility script.
 
 ## Setup and Prerequisites
 
@@ -58,9 +58,23 @@ This project demonstrates the integration of machine learning (ML) with blockcha
    pip install aliyun-python-sdk-core aliyun-python-sdk-ecs aliyun-python-sdk-vpc web3 py-solc-x
    ```
 
-2. **Configure Alibaba Cloud Access**:
-   - Fill in the `config.json` with your Alibaba Cloud access details.
-   - This includes `access_key_id`, `access_key_secret`, `region_id`, `vpc_id`, `security_group_id`, and `vswitch_id`.
+2. **Create `config.json`**:
+   The user must create a `config.json` file with their specific Alibaba Cloud access details. The file should have the following structure:
+
+   ```json
+   {
+       "access_key_id": "your_access_key_id",
+       "access_key_secret": "your_access_key_secret",
+       "region_id": "your_region_id",
+       "vpc_id": "your_vpc_id",
+       "security_group_id": "your_security_group_id",
+       "vswitch_id": "your_vswitch_id"
+   }
+   ```
+   
+   Replace `your_access_key_id`, `your_access_key_secret`, `your_region_id`, `your_vpc_id`, `your_security_group_id`, and `your_vswitch_id` with your actual Alibaba Cloud credentials and configuration values.
+
+The rest of the files (`contract_info.json`, `eip_info.json`, `model_data.json`, and `model_data_backup.json`) will be generated automatically by the scripts during the execution process.
 
 ## ECS Instance and Ganache Setup
 
