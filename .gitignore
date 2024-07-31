@@ -1,0 +1,6 @@
+# Ignore specific configuration files
+config.json
+contract_info.json
+eip_info.json
+model_data_backup.json
+model_data.json
